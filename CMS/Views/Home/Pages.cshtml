@@ -1,0 +1,29 @@
+﻿@model CMS.Models.Page
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<!--Start Carousel-->
+<div id="carouselExampleIndicators" class="carousel slide bs-slider">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-100" src="@(Model.MediaId == null ? Url.Content("~/Content/images/blank.jpg") : Url.Content("~/Uploads/"+Model.image.Path))" alt="First slide">
+            <div class="bs-slider-overlay"></div>
+            <div class="carousel-caption">
+                <h1 class="display-4 animated fadeInDown slide1 ashow">@Model.Name</h1>
+                <p class="lead animated fadeInDown slide2 d-none d-md-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit est facilis maiores, perspiciatis accusamus asperiores sint consequuntur debitis.</p>
+                <button type="button" class="btn btn-primary btn-lg scroll animated fadeInUp slide3 anone">Learn More</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Caursol-->
+<!--Start Page Content-->
+<section class="learn">
+    <div class="container">
+        <div style="padding: 70px 0;">
+            @Html.Raw(Model.Content)
+        </div>
+    </div>
+</section>
+<!--End Page Content-->

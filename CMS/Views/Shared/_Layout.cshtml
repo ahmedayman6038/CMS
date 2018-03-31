@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body ontouchstart="">
+    <!--Start Navbar-->
+
+    <nav id="header" class="navbar fixed-top navbar-expand-lg navbar-dark">
+        <div id="header-container" class="container navbar-container">
+            <a href="/Home/Index" id="brand" class="navbar-brand">@ViewBag.Settings.CompanyName</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            @{ var current = ViewContext.RouteData.Values["Action"].ToString();
+                var currentId = Convert.ToInt16(ViewContext.RouteData.Values["id"]);
+            }
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    @foreach (var page in ViewBag.Pages)
+                    {
+
+                        <li class="nav-item @(current == page.Name ? "active" : "") @(page.Name == "Home" && current == "Index" ? "active" : "") @(current == "Pages" && currentId == page.Id ? "active" : "")">
+                            @if (!ViewBag.defaultPages.Contains(page.Name))
+                            {
+                                <a href="/Home/@page.Name-@page.Id" class="nav-link">@page.Name</a>
+                            }
+                            else
+                            {
+                                <a href="/Home/@(page.Name == "Home" ? "Index" : page.Name)" class="nav-link">@page.Name</a>
+                            }
+                        </li>
+
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--End Navbar-->
+    @RenderBody()
+    <!--Start Footer-->
+    <section class="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-sm-12 about">
+                    <h1 class="display-4 more">About Company</h1>
+                    <p class="mt-3">
+                        @ViewBag.Settings.AboutCompany
+                    </p>
+                    <a href="/Home/About">Know More</a>
+
+                </div>
+                <div class="col-lg-4 col-sm-12 links">
+                    <h1 class="display-4 more">Follow Us</h1>
+                    <div class="icons mt-3">
+                        @if (ViewBag.Settings.ShowFb == true)
+                        {
+                            <a href="@ViewBag.Settings.FbUrl"><i class="fa fa-facebook"></i></a>
+                        }
+                        @if (ViewBag.Settings.ShowTw == true)
+                        {
+                            <a href="@ViewBag.Settings.TwUrl"><i class="fa fa-twitter"></i></a>
+                        }
+                        @if (ViewBag.Settings.ShowGo == true)
+                        {
+                            <a href="@ViewBag.Settings.GoUrl"><i class="fa fa-google-plus"></i></a>
+                        }
+                        @if (ViewBag.Settings.ShowYt == true)
+                        {
+                            <a href="@ViewBag.Settings.YtUrl"><i class="fa fa-youtube"></i></a>
+                        }
+                        @if (ViewBag.Settings.ShowLi == true)
+                        {
+                            <a href="@ViewBag.Settings.LiUrl"><i class="fa fa-linkedin-square"></i></a>
+                        }
+                        @if (ViewBag.Settings.ShowIn == true)
+                        {
+                            <a href="@ViewBag.Settings.InUrl"><i class="fa fa-instagram"></i></a>
+                        }
+                    </div>
+
+                </div>
+                <div class="col-lg-4 col-sm-12 con">
+                    <h1 class="display-4 more">Contact Information</h1>
+                    @if (ViewBag.Settings.CompanyAddress != null)
+                    {
+                        <div>
+                            <i class="fa fa-map-marker"></i>
+                            <p>@ViewBag.Settings.CompanyAddress</p>
+                        </div>
+                    }
+                    @if (ViewBag.Settings.CompanyPhone != null)
+                    {
+                        <div>
+                            <i class="fa fa-phone"></i>
+                            <p>@ViewBag.Settings.CompanyPhone</p>
+                        </div>
+                    }
+                    @if (ViewBag.Settings.CompanyEmail != null)
+                    {
+                        <div>
+                            <i class="fa fa-envelope"></i>
+                            <p><a href="mailto:@ViewBag.Settings.CompanyEmail">@ViewBag.Settings.CompanyEmail</a></p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="p-3 text-white footer">
+        <div class="container text-center">
+            <p class="mb-0">Copyright © @ViewBag.Settings.CompanyName @DateTime.Now.Year <span class="bad"> | </span> Design & Development By <a href="#"><span class="bad">Ahmed Ayman</span></a></p>
+        </div>
+    </footer>
+    <a href="#" class="scrollToTop"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+    <!--End Footer-->
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/js")
+    @RenderSection("scripts", required: false)
+    <script>
+        new WOW().init();
+        var nanobar = new Nanobar();
+        var x = 70;
+        nanobar.go(x);
+        var myVar = setInterval(myTimer, 500);
+
+        function myTimer() {
+            if (x == 99) {
+                clearInterval(myVar);
+            } else {
+                x += 1;
+                nanobar.go(x)
+            }
+        }
+        window.onload = function () {
+            nanobar.go(100);
+            clearInterval(myVar);
+        }
+    </script>
+</body>
+</html>

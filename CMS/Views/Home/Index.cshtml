@@ -1,0 +1,203 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<!--Start Carousel-->
+<div id="carouselExampleIndicators" class="carousel slide bs-slider" data-ride="carousel" data-interval="6000">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-100" src="~/Content/Images/slide1.jpg" alt="First slide">
+            <div class="bs-slider-overlay"></div>
+            <div class="carousel-caption d-none d-md-block">
+                <h1 class="display-4 animated fadeInDown slide1">Welcome To <span class="bad">Bootstrap</span></h1>
+                <p class="lead animated fadeInDown slide2">Creative one-page template set ideal for bussiness and personal use FIND OUT MORE</p>
+                <button type="button" class="btn btn-primary btn-lg scroll animated fadeInUp slide3">Learn More</button>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="~/Content/Images/slide2.jpg" alt="Second slide">
+            <div class="bs-slider-overlay"></div>
+            <div class="carousel-caption d-none d-md-block">
+                <h1 class="display-4 animated fadeInDown slide1">Join <span class="bad">Us</span></h1>
+                <p class="lead animated fadeInDown slide2">Creative one-page template set ideal for bussiness and personal use FIND OUT MORE</p>
+                <button type="button" class="btn btn-primary btn-lg animated fadeInLeft slide3" data-toggle="modal" data-target="#login">Login</button>
+                <button type="button" class="btn btn-primary btn-lg animated fadeInRight slide3" data-toggle="modal" data-target="#sign">Sign Up</button>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="~/Content/Images/slide3.jpg" alt="Third slide">
+            <div class="bs-slider-overlay"></div>
+            <div class="carousel-caption d-none d-md-block">
+                <h1 class="display-4 animated fadeInDown slide1">What People <span class="bad">Say ? </span></h1>
+                <blockquote class="blockquote text-center">
+                    <p class="mb-0 animated fadeInDown slide2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                    <footer class="blockquote-footer animated fadeInDown slide3">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<!--End Caursol-->
+<!--Start Projects-->
+<section class="projects learn">
+    <div class="container pt-3 pb-5">
+        <h1 class="display-4 text-center head wow fadeInUp">selected work</h1>
+        <p class="lead text-center par wow fadeInUp">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit est facilis maiores, perspiciatis accusamus asperiores sint consequuntur debitis.
+        </p>
+        <div class="row mt-5">
+        @foreach (var item in ViewBag.Projects)
+        {
+           @* string firstChars = item.Content;
+            if (!String.IsNullOrWhiteSpace(item.Content) && item.Content.Length >= 100)
+            {
+                firstChars = item.Content.Substring(0, 100) + "...";
+            }*@
+            <div class="col-md-4 col-sm-12">
+                <div class="card bg-dark text-white text-center wow zoomIn">
+                    <figure>
+                        @if (item.MediaId == null)
+                        {
+                            <img class="card-img" src="@Url.Content("~/Content/Images/blank.jpg")" alt="Card image" height="263">
+                        }
+                        else
+                        {
+                            <img class="card-img" src="@Url.Content("~/Uploads/"+item.image.Path)" alt="Card image">
+                        }
+                        <a href="/home/projects/@item.Id" class="text-light">
+                            <div class="card-img-overlay">
+                                <div class="mid">
+                                    <h4 class="card-title">@item.Title</h4>
+                                    <p class="card-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Click To See Details&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                                </div>
+                            </div>
+                        </a>
+                    </figure>
+                </div>
+            </div>
+        }
+   
+           </div>
+        </div>
+    </section>
+    <!--End Projects-->
+    <!--Start Services-->
+    <section class="services">
+        <div class="container pt-3">
+            <h1 class="display-4 head text-center wow fadeInUp">WHAT WE DO</h1>
+            <p class="lead text-center wow fadeInUp par">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit est facilis maiores, perspiciatis accusamus asperiores sint consequuntur debitis.
+            </p>
+            <div class="row text-center mt-5">
+                <div class="col-md-4 col-sm-12 wow fadeInUp">
+                    <div class="ser_box">
+                        <span><i class="fa fa-code"></i></span>
+                        <h3>Web Development</h3>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="ser_box">
+                        <span><i class="fa fa-mobile"></i></span>
+                        <h3>Mobile Apps</h3>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="ser_box">
+                        <span><i class="fa fa-pencil"></i></span>
+                        <h3>UX Design</h3>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 wow fadeInUp">
+                    <div class="ser_box">
+                        <span><i class="fa fa-file-video-o"></i></span>
+                        <h3>Video Editing</h3>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="ser_box">
+                        <span><i class="fa fa-search"></i></span>
+                        <h3>SEO Ranking</h3>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="ser_box">
+                        <span><i class="fa fa-cloud"></i></span>
+                        <h3>Cloud Based Apps</h3>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End Services-->
+    <section class="what" style="background-image: url('/Content/Images/slide3.jpg');">
+        <div class="overlay">
+            <div class="container text-center">
+                <h1 class="display-4 wow fadeInUp text-light">What People <span class="bad">Say ? </span></h1>
+                <blockquote class="blockquote text-center">
+                    <p class="mb-0 wow fadeInUp text-light lead" data-wow-delay="0.2s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                    <footer class="blockquote-footer wow fadeInUp" data-wow-delay="0.4s">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                </blockquote>
+            </div>
+        </div>
+    </section>
+    <!--Start Blog-->
+    <section class="blog">
+        <div class="container pt-3 pb-5">
+            <h1 class="display-4 head text-center wow fadeInUp">RECENT FROM BLOG</h1>
+            <p class="lead text-center wow fadeInUp par">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit est facilis maiores, perspiciatis accusamus asperiores sint consequuntur debitis.
+            </p>
+            <div class="row mt-5">
+                <div class="card my-4 col-md-4 col-sm-12">
+                    <figure class="fig1 wow bounceIn"><a href="#"><img class="card-img-top" src="~/Content/Images/24.jpg" alt="Card image cap"></a></figure>
+                    <div class="card-body">
+                        <h4 class="card-title"><a href="#">45 Minimal Worksspace Rooms for Web Savvys</a></h4>
+                        <span class="posted_by">Posted by: Admin</span>
+                        <span class="comment float-right"><a href="">21<i class="fa fa-comment"></i></a></span>
+                        <p class="card-text">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                        <a href="#" class="btn btn-primary read">Read More</a>
+                    </div>
+                </div>
+                <div class="card my-4 col-md-4 col-sm-12">
+                    <figure class="fig2 wow bounceIn"><a href="#"><img class="card-img-top" src="~/Content/Images/25.jpg" alt="Card image cap"></a></figure>
+                    <div class="card-body">
+                        <h4 class="card-title"><a href="#">45 Minimal Worksspace Rooms for Web Savvys</a></h4>
+                        <span class="posted_by">Posted by: Admin</span>
+                        <span class="comment float-right"><a href="">21<i class="fa fa-comment"></i></a></span>
+                        <p class="card-text">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                        <a href="#" class="btn btn-primary read">Read More</a>
+                    </div>
+                </div>
+                <div class="card my-4 col-md-4 col-sm-12">
+                    <figure class="fig3 wow bounceIn"><a href="#"><img class="card-img-top" src="~/Content/Images/26.jpg" alt="Card image cap"></a></figure>
+                    <div class="card-body">
+                        <h4 class="card-title"><a href="#">45 Minimal Worksspace Rooms for Web Savvys</a></h4>
+                        <span class="posted_by">Posted by: Admin</span>
+                        <span class="comment float-right"><a href="">21<i class="fa fa-comment"></i></a></span>
+                        <p class="card-text">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                        <a href="#" class="btn btn-primary read">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End Blog-->

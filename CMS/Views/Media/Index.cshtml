@@ -1,0 +1,87 @@
+﻿@model IEnumerable<CMS.Models.Media>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<h2>Gallary</h2>
+
+@using (Html.BeginForm("Index", "Media", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group ml-3 mr-3">
+        @Html.LabelFor(model => model.FirstOrDefault().FileName)
+        <input type="file" name="files" id="files" class="form-control" multiple="multiple" required />
+        @Html.ValidationMessageFor(model => model.FirstOrDefault().FileName, "", new { @class = "text-danger" })
+        @if (ViewBag.SuccessUpload != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                @ViewBag.SuccessUpload
+            </div>
+        }
+        @if (ViewBag.ErrorUpload != null)
+        {
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                @ViewBag.ErrorUpload
+            </div>
+        }
+    </div>
+
+    <div class="form-group ml-3 mr-3">
+        <input type="submit" value="Upload" class="btn btn-primary btn-block" />
+    </div>
+
+
+}
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-picture-o"></i> Gallary
+    </div>
+    <div class="card-body">
+  
+            @if (Model.Count() > 0)
+            {
+                <div class="row text-center">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <a href="/media/details/@item.Id" class="d-block mb-4 h-100">
+                                <img class="img-fluid img-thumbnail" src="~/Uploads/@item.FileName" alt="">
+                            </a>
+                        </div>
+
+                    }
+                </div>
+            }
+            else
+            {
+                <p class="text-center">No Data Avalible To Show</p>
+            }
+
+    </div>
+    <div class="card-footer small text-muted">Updated Today At 
+    <script>
+        var d = new Date(); 
+        document.write(d.getHours() % 12 + ":" + d.getMinutes() + ":" + d.getSeconds());
+    </script>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+    $(document).ready(function () {
+        setTimeout(function () {
+            $(".alert").alert('close');
+        }, 10000);
+    });
+    </script>
+}

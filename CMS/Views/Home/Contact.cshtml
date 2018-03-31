@@ -1,0 +1,130 @@
+﻿@model CMS.Models.Mail
+@{
+    ViewBag.Title = "Contact";
+}
+<!--Start Carousel-->
+<div id="carouselExampleIndicators" class="carousel slide bs-slider">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-100" src="~/Content/Images/slide1.jpg" alt="First slide">
+            <div class="bs-slider-overlay"></div>
+            <div class="carousel-caption">
+                <h1 class="display-4 animated fadeInDown slide1 ashow">Contact <span class="bad">Us</span></h1>
+                <p class="lead animated fadeInDown slide2 d-none d-md-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit est facilis maiores, perspiciatis accusamus asperiores sint consequuntur debitis.</p>
+                <button type="button" class="btn btn-primary btn-lg scroll animated fadeInUp slide3 anone">Learn More</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Caursol-->
+<!--Start Contact-->
+<section class="learn" id="contact">
+    <div class="container">
+        @using (Ajax.BeginForm("SendMail", "Home",
+                new AjaxOptions
+                {
+                    OnSuccess = "OnSuccess",
+                    OnFailure = "OnFailure",
+                    LoadingElementId = "progress",
+                }))
+        {
+            <div class="row wow fadeInUp">
+                <div class="col-md-6">
+                    <h3 class="section-title">Our Address</h3>
+                    <p class="section-content lead">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <ul class="contact-info">
+                        @if (ViewBag.Settings.CompanyAddress != null)
+                        {
+                            <li><i class="fa fa-map-marker"></i>@ViewBag.Contact.CompanyAddress</li>
+                        }
+                        @if (ViewBag.Settings.CompanyPhone != null)
+                        {
+                            <li><i class="fa fa-phone"></i>@ViewBag.Settings.CompanyPhone</li>
+                        }
+                        @if (ViewBag.Settings.CompanyEmail != null)
+                        {
+                            <li><i class="fa fa-envelope"></i><a href="#">@ViewBag.Settings.CompanyEmail</a></li>
+                        }
+                        <li><i class="fa fa-globe"></i><a href="#">@Request.Url.Authority</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Name" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Html.TextAreaFor(model => model.Message, new { @class = "form-control", placeholder = "Message", cols = "30", rows = "7" })
+                                @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div id="result"></div>
+                                <input type="submit" value="Send Message" class="btn btn-primary send">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+<div id="progress" class="modal">
+    <div class="center">
+        <img src="~/Content/Images/loading.gif" />
+    </div>
+</div>
+<!--End Contact-->
+<!--Start Google Map-->
+<div id="map"></div>
+<!--End Google Map-->
+@section scripts{
+    <script type="text/javascript">
+        function OnSuccess(response) {
+            jQuery(function ($) {
+                $("#result").empty().append(response);
+                   setTimeout(function () {
+                   $(".alert").alert('close');
+                }, 10000);
+            });
+        }
+        function OnFailure(response) {
+            jQuery(function ($) {
+                $("#result").empty().append("<div class=\"alert alert-danger\" role=\"alert\"><strong>Oops!</strong> Some thing goes wrong please try again later.</div>");
+                       setTimeout(function () {
+                          $(".alert").alert('close');
+                     }, 10000);
+            });
+        }
+    </script>
+    <script>
+        function initMap() {
+            var uluru = { lat: 30.056822, lng: 31.230892 };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 4,
+                center: uluru
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAE57PDLke_n-xmeK4u8Kj52uVUq5LJjOA&callback=initMap">
+    </script>
+
+
+}

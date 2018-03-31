@@ -1,0 +1,51 @@
+﻿@model CMS.Models.Media
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Gallary</h4>
+    <hr />
+    <a href="~/Uploads/@Model.FileName"><img class="img-fluid img-thumbnail mb-4" src="~/Uploads/@Model.FileName" alt=""></a>
+    <dl class="dl-horizontal ml-3">
+        <dt>
+            Dimensions
+        </dt>
+
+        <dd>
+            @ViewBag.ImageWidth x @ViewBag.ImageHeight
+        </dd>
+
+        <dt>
+            File Size
+        </dt>
+
+        <dd>
+            @ViewBag.ImageSize KB
+        </dd>
+
+        <dt>
+            Date Of Upload
+        </dt>
+
+        <dd>
+            @Model.Date
+        </dd>
+
+        <dt>
+            <a href="~/Uploads/@Model.FileName" download>Download File</a>
+        </dt>
+    </dl>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-actions no-color mb-4">
+        <input type="submit" value="Delete" class="btn btn-primary" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+}

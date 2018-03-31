@@ -1,0 +1,74 @@
+﻿@model PagedList.IPagedList<CMS.Models.Post>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Projects";
+}
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<!--Start Carousel-->
+<div id="carouselExampleIndicators" class="carousel slide bs-slider">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-100" src="~/Content/Images/slide1.jpg" alt="First slide">
+            <div class="bs-slider-overlay"></div>
+            <div class="carousel-caption">
+                <h1 class="display-4 animated fadeInDown slide1 ashow"><span class="bad">Our</span> Projects</h1>
+                <p class="lead animated fadeInDown slide2 d-none d-md-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit est facilis maiores, perspiciatis accusamus asperiores sint consequuntur debitis.</p>
+                <button type="button" class="btn btn-primary btn-lg scroll animated fadeInUp slide3 anone">Learn More</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Caursol-->
+<!--Start Projects-->
+<section class="projects learn">
+    <div class="container pt-3 pb-5">
+            @{var counter = 0;}
+            @foreach(var item in Model)
+            {
+                if(counter == 0)
+                {
+                    @:<div class="row mt-5">
+                }
+                counter++;
+
+               <div class="col-md-4 col-sm-12">
+                <div class="card bg-dark text-white text-center wow zoomIn">
+                    <figure>
+                        @if (item.MediaId == null)
+                        {
+                            <img class="card-img" src="@Url.Content("~/Content/Images/blank.jpg")" alt="Card image" height="263">
+                        }
+                        else
+                        {
+                            <img class="card-img" src="@Url.Content("~/Uploads/"+item.image.Path)" alt="Card image">
+                        }
+                        <a href="/home/projects/@item.Id" class="text-light">
+                            <div class="card-img-overlay">
+                                <div class="mid">
+                                    <h4 class="card-title">@item.Title</h4>
+                                    <p class="card-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Click To See Details&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                                </div>
+                            </div>
+                        </a>
+                    </figure>
+                </div>
+            </div>
+            
+                if(counter == 3)
+                {
+                    @:</div>
+                    counter = 0;
+                }
+
+            }
+            @if(counter < 3)
+            {
+                @:</div>
+            }
+         <div class="row">
+        @Html.PagedListPager(Model, page => Url.Action("Projects",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+        </div>
+    </div>
+</section>
+<!--End Projects-->

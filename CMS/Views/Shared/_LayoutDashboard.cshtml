@@ -1,0 +1,276 @@
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Admin/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <a href="\home\index" id="brand" class="navbar-brand">Dashboard</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <a class="nav-link" href="/Dashboard/Index">
+                        <i class="fa fa-fw fa-dashboard"></i>
+                        <span class="nav-link-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Pages">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapsePages" data-parent="#exampleAccordion">
+                        <i class="fa fa-fw fa-file-powerpoint-o"></i>
+                        <span class="nav-link-text">Pages</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapsePages">
+                        <li>
+                            <a href="/pages/index">All Pages</a>
+                        </li>
+                        <li>
+                            <a href="/pages/create">Add New</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Categories">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseCategories" data-parent="#exampleAccordion">
+                        <i class="fa fa-fw fa-th"></i>
+                        <span class="nav-link-text">Categories</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapseCategories">
+                        <li>
+                            <a href="/categories/index">All Categories</a>
+                        </li>
+                        <li>
+                            <a href="/categories/create">Add Categories</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Posts">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapsePosts" data-parent="#exampleAccordion">
+                        <i class="fa fa-fw fa-thumb-tack"></i>
+                        <span class="nav-link-text">Posts</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapsePosts">
+                        <li>
+                            <a href="/posts/index">All Posts</a>
+                        </li>
+                        <li>
+                            <a href="/posts/create">Add Posts</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Comments">
+                    <a class="nav-link" href="Comments">
+                        <i class="fa fa-fw fa-comments"></i>
+                        <span class="nav-link-text">Comments</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Media">
+                    <a class="nav-link" href="/media/index">
+                        <i class="fa fa-fw fa-picture-o"></i>
+                        <span class="nav-link-text">Media</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Users">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseUsers" data-parent="#exampleAccordion">
+                        <i class="fa fa-fw fa-users"></i>
+                        <span class="nav-link-text">Users</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapseUsers">
+                        <li>
+                            <a href="/users/index">All Users</a>
+                        </li>
+                        <li>
+                            <a href="/roles/index">All Roles</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Mails">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMails" data-parent="#exampleAccordion">
+                        <i class="fa fa-fw fa-envelope"></i>
+                        <span class="nav-link-text">MailBox</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapseMails">
+                        <li>
+                            <a href="/mails/index">Mails</a>
+                        </li>
+                        <li>
+                            <a href="/mails/create">Compose</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Settings">
+                    <a class="nav-link" href="/settings/edit">
+                        <i class="fa fa-fw fa-cog"></i>
+                        <span class="nav-link-text">Settings</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav sidenav-toggler">
+                <li class="nav-item">
+                    <a class="nav-link text-center" id="sidenavToggler">
+                        <i class="fa fa-fw fa-angle-left"></i>
+                        <span class="collapse_menu">Collapse menu</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-fw fa-envelope"></i>
+                        <span class="d-lg-none">
+                            Messages
+                            <span class="badge badge-pill badge-primary">12 New</span>
+                        </span>
+                        <span class="indicator text-primary d-none d-lg-block hideMessages" id="messageSpan">
+                            <i class="fa fa-fw fa-circle"><span style="font-size:15px;" id="messagesCounter">0</span></i>
+                        </span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="messagesDropdown">
+                        <h6 class="dropdown-header">New Messages:</h6>
+                        <div id="messages" class="notifications">
+                            <div id="messageData">
+
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <div style="height:35px;padding-top:5px">
+                                <div id="endData" class="text-center" style="display:none">
+                                    <b>No data avalible now to show</b>
+                                </div>
+                                <div id="progress" class="text-center" style="display:none">
+                                    <b>Loading...</b>
+                                </div>
+                                <div id="error" class="text-center" style="display:none">
+                                    <b>Sorry an error occuer while retreive data</b>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item small" href="/Mails/Index">View all messages</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-fw fa-bell"></i>
+                        <span class="d-lg-none">
+                            Alerts
+                            <span class="badge badge-pill badge-warning">6 New</span>
+                        </span>
+                        <span class="indicator text-primary d-none d-lg-block hideMessages" id="alertSpan">
+                            <i class="fa fa-fw fa-circle"><span style="font-size:15px;" id="alertCounter">0</span></i>
+                        </span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="alertsDropdown">
+                        <h6 class="dropdown-header">New Alerts:</h6>
+
+                        <div id="alerts" class="notifications">
+                            <div id="alertData">
+
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <div style="height:35px;padding-top:5px">
+                                <div id="endData2" class="text-center" style="display:none">
+                                    <b>No data avalible now to show</b>
+                                </div>
+                                <div id="progress2" class="text-center" style="display:none">
+                                    <b>Loading...</b>
+                                </div>
+                                <div id="error2" class="text-center" style="display:none">
+                                    <b>Sorry an error occuer while retreive data</b>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item small" href="#">View all alerts</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <form class="form-inline my-2 my-lg-0 mr-lg-2">
+                        <div class="input-group">
+                            <input class="form-control" type="text" placeholder="Search for...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                        <i class="fa fa-fw fa-user" aria-hidden="true"></i>@User.Identity.GetUserName()
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                        <i class="fa fa-fw fa-sign-out"></i>Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            @RenderBody()
+        </div>
+    </div>
+    <footer class="sticky-footer">
+        <div class="container">
+            <div class="text-center">
+                <small>Copyright © Company Site @DateTime.Now.Year</small>
+            </div>
+        </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <a class="btn btn-primary" href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/admin/scripts")
+    <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script src="~/Scripts/Notifications.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                "aaSorting": [],
+                "bDestroy": true
+            });
+        });
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
