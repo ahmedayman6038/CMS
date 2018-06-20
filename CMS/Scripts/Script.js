@@ -1,8 +1,8 @@
 ﻿$(document).ready(function () {
-    $('#dataTable').DataTable({
-        "aaSorting": [],
-        "bDestroy": true
-    });
+    //$('#dataTable').DataTable({
+    //    "aaSorting": [],
+    //    "bDestroy": true
+    //});
     //function OnSuccess(response) {
     //    $("#result").empty().append(response);
     //    setTimeout(function () {

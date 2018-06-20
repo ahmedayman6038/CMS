@@ -14,7 +14,8 @@ namespace CMS.Controllers
     public class MailsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        private SystemHelper system = new SystemHelper(); 
+        private SystemHelper system = new SystemHelper();
+        private NotificationHelper notification = new NotificationHelper();
         // GET: Mails
         public ActionResult Index()
         {
@@ -81,6 +82,8 @@ namespace CMS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            Notification notif = db.Notifications.Where(x => x.ItemId == id).First();
+            notification.RemoveNotification(notif.Id);
             Mail mail = db.Mails.Find(id);
             db.Mails.Remove(mail);
             db.SaveChanges();

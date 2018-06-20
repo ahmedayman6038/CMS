@@ -225,59 +225,6 @@
     <Compile Include="Helpers\NotificationHelper.cs" />
     <Compile Include="Helpers\SystemHelper.cs" />
     <Compile Include="Hubs\NotificationHub.cs" />
-    <Compile Include="Migrations\201802041139069_mails.cs" />
-    <Compile Include="Migrations\201802041139069_mails.Designer.cs">
-      <DependentUpon>201802041139069_mails.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802041612481_star.cs" />
-    <Compile Include="Migrations\201802041612481_star.Designer.cs">
-      <DependentUpon>201802041612481_star.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802041618205_date.cs" />
-    <Compile Include="Migrations\201802041618205_date.Designer.cs">
-      <DependentUpon>201802041618205_date.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802041820029_path.cs" />
-    <Compile Include="Migrations\201802041820029_path.Designer.cs">
-      <DependentUpon>201802041820029_path.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802081909141_notification.cs" />
-    <Compile Include="Migrations\201802081909141_notification.Designer.cs">
-      <DependentUpon>201802081909141_notification.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802081911228_notifi.cs" />
-    <Compile Include="Migrations\201802081911228_notifi.Designer.cs">
-      <DependentUpon>201802081911228_notifi.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802082031537_notify.cs" />
-    <Compile Include="Migrations\201802082031537_notify.Designer.cs">
-      <DependentUpon>201802082031537_notify.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802082106413_not.cs" />
-    <Compile Include="Migrations\201802082106413_not.Designer.cs">
-      <DependentUpon>201802082106413_not.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802101235450_usernotify.cs" />
-    <Compile Include="Migrations\201802101235450_usernotify.Designer.cs">
-      <DependentUpon>201802101235450_usernotify.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802101255252_user.cs" />
-    <Compile Include="Migrations\201802101255252_user.Designer.cs">
-      <DependentUpon>201802101255252_user.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802101300346_us.cs" />
-    <Compile Include="Migrations\201802101300346_us.Designer.cs">
-      <DependentUpon>201802101300346_us.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802101305054_play.cs" />
-    <Compile Include="Migrations\201802101305054_play.Designer.cs">
-      <DependentUpon>201802101305054_play.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802101317557_UserNotification.cs" />
-    <Compile Include="Migrations\201802101317557_UserNotification.Designer.cs">
-      <DependentUpon>201802101317557_UserNotification.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -295,10 +242,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\aspnet-CMS-v1.mdf" />
-    <Content Include="App_Data\aspnet-CMS-v1_log.ldf">
-      <DependentUpon>aspnet-CMS-v1.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\admin.css" />
     <Content Include="Content\animate.css" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -886,6 +829,7 @@
     <Content Include="Views\Mails\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Content\Images\" />
     <Folder Include="Uploads\" />
   </ItemGroup>
@@ -899,47 +843,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201802041139069_mails.resx">
-      <DependentUpon>201802041139069_mails.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802041612481_star.resx">
-      <DependentUpon>201802041612481_star.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802041618205_date.resx">
-      <DependentUpon>201802041618205_date.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802041820029_path.resx">
-      <DependentUpon>201802041820029_path.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802081909141_notification.resx">
-      <DependentUpon>201802081909141_notification.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802081911228_notifi.resx">
-      <DependentUpon>201802081911228_notifi.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802082031537_notify.resx">
-      <DependentUpon>201802082031537_notify.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802082106413_not.resx">
-      <DependentUpon>201802082106413_not.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802101235450_usernotify.resx">
-      <DependentUpon>201802101235450_usernotify.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802101255252_user.resx">
-      <DependentUpon>201802101255252_user.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802101300346_us.resx">
-      <DependentUpon>201802101300346_us.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802101305054_play.resx">
-      <DependentUpon>201802101305054_play.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802101317557_UserNotification.resx">
-      <DependentUpon>201802101317557_UserNotification.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

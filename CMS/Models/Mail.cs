@@ -22,8 +22,6 @@ namespace CMS.Models
         [AllowHtml]
         public string Message { get; set; }
 
-        public bool Star { get; set; }
-
         public string Date { get; set; }
     }
 }

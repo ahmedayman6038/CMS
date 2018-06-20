@@ -67,7 +67,7 @@
                                 {
                                     <div class="col-md-3 col-sm-6 col-xs-12" id="gallary">
                                         <input type="radio" name="MediaId" id="@item.Id" class="input_hidden" value="@item.Id" @(Model.MediaId == item.Id ? "checked" : "") />
-                                        <label for="@item.Id"><img class="img-fluid img-thumbnail" src="@Url.Content("~/Uploads/"+item.Path)" alt="" /></label>
+                                        <label for="@item.Id"><img class="img-fluid img-thumbnail" src="@Url.Content("~/Uploads/"+item.FileName)" alt="" /></label>
                                     </div>
 
                                 }

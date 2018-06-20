@@ -17,6 +17,7 @@ namespace CMS.Controllers
     {
         private SystemHelper system = new SystemHelper();
         private AccountController account = new AccountController();
+            
         public ActionResult Index()
         {
             ViewBag.Projects = system.GetPostsOfCategory("Projects").OrderByDescending(x => x.Id).Take(3);
@@ -99,6 +100,7 @@ namespace CMS.Controllers
              if (ModelState.IsValid)
              {
                 mail.Date = DateTime.Now.ToString();
+                mail.Message = String.Format($"From: {mail.Email} <br> Message: {mail.Message}");
                 bool check = await system.SendEmailAsync(mail);
 
                 if (check)

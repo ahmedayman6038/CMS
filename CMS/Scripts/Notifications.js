@@ -36,7 +36,7 @@
             MarkAlertsSeen();
         });
         notify.client.sendAlertNotification = function (itemId, title, content, date) {
-            $('#alertData').prepend('<div class="dropdown-divider"></div><a class="dropdown-item not-readed" href= "/Mails/Details/' + itemId + '">' +
+            $('#alertData').prepend('<div class="dropdown-divider"></div><a class="dropdown-item" href= "#">' +
                 '<span class="text-success"><strong>' + title + '<span class="text-danger" id="newSpan"> (New) </span></strong></span><span class="small float-right text-muted">' + date + '</span>' +
                 '<div class="dropdown-message small">' + content + '</div></a>');
             FormatText();
@@ -156,15 +156,12 @@
                             for (var i = 0; i < data.length; i++) {
                                 var readed = "";
                                 var seen = "";
-                                if (data[i].WasRead == false) {
-                                    readed = "not-readed";
-                                }
                                 if (data[i].WasSeen == false) {
                                     newAlerts++;
                                 } else {
                                     seen = "hideMessages";
                                 }
-                                $("#alertData").append('<div class="dropdown-divider"></div><a class="dropdown-item ' + readed + '" href= "/Mails/Details/' + data[i].ItemId + '">' +
+                                $("#alertData").append('<div class="dropdown-divider"></div><a class="dropdown-item" href= "#">' +
                                     '<span class="text-success"><strong>' + data[i].Title + '<span class="text-danger ' + seen + '" id="newSpan"> (New) </span></strong></span><span class="small float-right text-muted">' + data[i].Date + '</span>' +
                                     '<div class="dropdown-message small">' + data[i].Content + '</div></a>');
                             }

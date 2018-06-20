@@ -23,11 +23,11 @@
     <div class="container">
         <div class="row wow fadeInUp">
             <div class="col-md-6">
-                <h1 class="section-title">More About Us</h1>
+                <h1 class="section-title">@Model.Title</h1>
                 <p class="section-content lead">@Html.Raw(Model.Content)</p>
             </div>
             <div class="col-md-6 text-center">
-                <img src="@(Model.MediaId == null ? Url.Content("~/Content/images/blank.jpg") : Url.Content("~/Uploads/"+Model.image.Path))" class="rounded img-fluid" alt="...">
+                <img src="@(Model.MediaId == null ? Url.Content("~/Content/images/blank.jpg") : Url.Content("~/Uploads/"+Model.image.FileName))" class="rounded img-fluid" alt="...">
             </div>
         </div>
     </div>

@@ -24,6 +24,16 @@ namespace CMS.Helpers
             return notification.Id;
         }
 
+        public bool RemoveNotification(int id)
+        {
+            IEnumerable<UserNotification> list = db.UserNotifications.Where(x => x.NotificationId == id).ToList();
+            db.UserNotifications.RemoveRange(list);
+            Notification notification = db.Notifications.Find(id);
+            db.Notifications.Remove(notification);
+            db.SaveChanges();
+            return true;
+        }
+
         public bool AddUserNotification(UserNotification userNotification)
         {
             db.UserNotifications.Add(userNotification);
