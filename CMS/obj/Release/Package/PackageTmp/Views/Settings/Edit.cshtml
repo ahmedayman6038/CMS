@@ -1,0 +1,133 @@
+﻿@model CMS.Models.Setting
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <h4>Settings</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-group ml-3 mr-3">
+        @Html.LabelFor(model => model.CompanyName)
+        @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group ml-3 mr-3">
+        @Html.LabelFor(model => model.CompanyEmail)
+        @Html.EditorFor(model => model.CompanyEmail, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.CompanyEmail, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group ml-3 mr-3">
+        @Html.LabelFor(model => model.CompanyAddress)
+        @Html.EditorFor(model => model.CompanyAddress, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.CompanyAddress, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group ml-3 mr-3">
+        @Html.LabelFor(model => model.CompanyPhone)
+        @Html.EditorFor(model => model.CompanyPhone, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.CompanyPhone, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group ml-3 mr-3">
+        @Html.LabelFor(model => model.AboutCompany)
+        @Html.EditorFor(model => model.AboutCompany, new { htmlAttributes = new { @class = "form-control text-area" } })
+        @Html.ValidationMessageFor(model => model.AboutCompany, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group ml-3 mr-3">
+        @Html.LabelFor(model => model.FbUrl)
+        @Html.EditorFor(model => model.FbUrl, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.FbUrl, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-check ml-3 mr-3">
+        <label class="form-check-label">
+            @Html.EditorFor(model => model.ShowFb, "", new { @class = "form-check-input" })
+            @Html.LabelFor(model => model.ShowFb)
+            @Html.ValidationMessageFor(model => model.ShowFb, "", new { @class = "text-danger" })
+        </label>
+    </div>
+
+    <div class="form-group ml-3 mr-3">
+        @Html.LabelFor(model => model.TwUrl)
+        @Html.EditorFor(model => model.TwUrl, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.TwUrl, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-check ml-3 mr-3">
+        <label class="form-check-label">
+            @Html.EditorFor(model => model.ShowTw, "", new { @class = "form-check-input" })
+            @Html.LabelFor(model => model.ShowTw)
+            @Html.ValidationMessageFor(model => model.ShowTw, "", new { @class = "text-danger" })
+        </label>
+    </div>
+
+    <div class="form-group ml-3 mr-3">
+        @Html.LabelFor(model => model.GoUrl)
+        @Html.EditorFor(model => model.GoUrl, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.GoUrl, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-check ml-3 mr-3">
+        <label class="form-check-label">
+            @Html.EditorFor(model => model.ShowGo, "", new { @class = "form-check-input" })
+            @Html.LabelFor(model => model.ShowGo)
+            @Html.ValidationMessageFor(model => model.ShowGo, "", new { @class = "text-danger" })
+        </label>
+    </div>
+
+    <div class="form-group ml-3 mr-3">
+        @Html.LabelFor(model => model.YtUrl)
+        @Html.EditorFor(model => model.YtUrl, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.YtUrl, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-check ml-3 mr-3">
+        <label class="form-check-label">
+            @Html.EditorFor(model => model.ShowYt, "", new { @class = "form-check-input" })
+            @Html.LabelFor(model => model.ShowYt)
+            @Html.ValidationMessageFor(model => model.ShowYt, "", new { @class = "text-danger" })
+        </label>
+    </div>
+
+    <div class="form-group ml-3 mr-3">
+        @Html.LabelFor(model => model.LiUrl)
+        @Html.EditorFor(model => model.LiUrl, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.LiUrl, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-check ml-3 mr-3">
+        <label class="form-check-label">
+            @Html.EditorFor(model => model.ShowLi, "", new { @class = "form-check-input" })
+            @Html.LabelFor(model => model.ShowLi)
+            @Html.ValidationMessageFor(model => model.ShowLi, "", new { @class = "text-danger" })
+        </label>
+    </div>
+
+    <div class="form-group ml-3 mr-3">
+        @Html.LabelFor(model => model.InUrl)
+        @Html.EditorFor(model => model.InUrl, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.InUrl, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-check ml-3 mr-3">
+        <label class="form-check-label">
+            @Html.EditorFor(model => model.ShowIn, "", new { @class = "form-check-input" })
+            @Html.LabelFor(model => model.ShowIn)
+            @Html.ValidationMessageFor(model => model.ShowIn, "", new { @class = "text-danger" })
+        </label>
+    </div>
+    <div class="form-group ml-3 mr-3">
+        <input type="submit" value="Save" class="btn btn-primary btn-block" />
+    </div>
+}

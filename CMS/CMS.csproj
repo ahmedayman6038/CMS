@@ -20,7 +20,8 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44312</IISExpressSSLPort>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -253,6 +254,17 @@
     <Content Include="Content\dataTables.bootstrap4.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Images\24.jpg" />
+    <Content Include="Content\Images\25.jpg" />
+    <Content Include="Content\Images\26.jpg" />
+    <Content Include="Content\Images\27.jpg" />
+    <Content Include="Content\Images\28.jpg" />
+    <Content Include="Content\Images\29.jpg" />
+    <Content Include="Content\Images\blank.jpg" />
+    <Content Include="Content\Images\loading.gif" />
+    <Content Include="Content\Images\slide1.jpg" />
+    <Content Include="Content\Images\slide2.jpg" />
+    <Content Include="Content\Images\slide3.jpg" />
     <Content Include="Content\normalize.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
@@ -706,6 +718,7 @@
     <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
     <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="Scripts\ckeditor\skins\moono-lisa\readme.md" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -739,7 +752,9 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\wow.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -830,7 +845,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Images\" />
     <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
@@ -863,7 +877,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>52799</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44312/</IISUrl>
+          <IISUrl>http://localhost:44312/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

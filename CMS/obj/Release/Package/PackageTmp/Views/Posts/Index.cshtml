@@ -1,0 +1,58 @@
+﻿@model IEnumerable<CMS.Models.Post>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<h2>Posts</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-thumb-tack"></i> Posts
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Title)</th>
+                        <th>@Html.DisplayNameFor(model => model.Author)</th>
+                        <th>@Html.DisplayNameFor(model => model.CategoryId)</th>
+                        <th>@Html.DisplayNameFor(model => model.MediaId)</th>
+                        <th>@Html.DisplayNameFor(model => model.Date)</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Author)</td>
+                            <td>@Html.DisplayFor(modelItem => item.category.Name)</td>
+                            <td><img src="@(item.MediaId == null ? Url.Content("~/Content/images/blank.jpg") : Url.Content("~/Uploads/"+item.image.FileName))" width="150" height="100" /></td>
+                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.Id })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer small text-muted">Updated Today At 
+     <script>
+        var d = new Date();
+        document.write(d.getHours() % 12 + ":" + d.getMinutes() + ":" + d.getSeconds());
+        </script>
+    </div>
+</div>

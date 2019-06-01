@@ -1,0 +1,68 @@
+﻿@model IEnumerable<CMS.Models.Mail>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<h2>Mails</h2>
+
+<p>
+    @Html.ActionLink("Compose", "Create", "Mails")
+</p>
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-envelope"></i> Mails
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Name)</th>
+                        <th>@Html.DisplayNameFor(model => model.Email)</th>
+                        <th>@Html.DisplayNameFor(model => model.Message)</th>
+                        <th>@Html.DisplayNameFor(model => model.Date)</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        string firstChars = item.Message;
+                        if (!String.IsNullOrWhiteSpace(item.Message) && item.Message.Length >= 25)
+                        {
+                            firstChars = item.Message.Substring(0, 25) + "...";
+                        }
+                        string date = item.Date;
+                        DateTime current = DateTime.Now;
+                        DateTime dt = Convert.ToDateTime(item.Date);
+                        if(dt.Date == current.Date)
+                        {
+                            date = "Today At " + dt.ToString("h:mm:ss tt");
+                        }
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                        <td>@firstChars</td>
+                        <td>@date</td>
+                        <td>
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id })
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer small text-muted">
+        Updated Today At
+        <script>
+        var d = new Date();
+        document.write(d.getHours() % 12 + ":" + d.getMinutes() + ":" + d.getSeconds());
+        </script>
+    </div>
+</div>

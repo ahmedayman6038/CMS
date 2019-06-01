@@ -1,0 +1,66 @@
+﻿@model CMS.Models.Page
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Page</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MediaId)
+        </dt>
+
+        <dd>
+          <img class="img-fluid img-thumbnail" src="@(Model.MediaId == null ? Url.Content("~/Content/images/blank.jpg") : Url.Content("~/Uploads/"+Model.image.FileName))" alt=""> 
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Activation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Visitors)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Visitors)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color mb-3">
+            <input type="submit" value="Delete" class="btn btn-primary" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

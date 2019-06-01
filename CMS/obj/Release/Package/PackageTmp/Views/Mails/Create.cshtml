@@ -1,0 +1,46 @@
+﻿@model CMS.Models.Mail
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+<h2>Compose</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <h4>Mail</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group ml-3 mr-3">
+        <label>To:</label>
+        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group ml-3 mr-3">
+        <label>Subject:</label>
+        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group ml-3 mr-3">
+        @Html.LabelFor(model => model.Message)
+        @Html.TextAreaFor(model => model.Message, new { @id = "MessageContent", @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group ml-3 mr-3">
+        <input type="submit" value="Send" class="btn btn-primary btn-block" />
+    </div>
+}
+
+<div class="mb-4">
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<script>
+    CKEDITOR.replace("MessageContent");
+</script>

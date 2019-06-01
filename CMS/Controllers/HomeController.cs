@@ -12,7 +12,6 @@ using Microsoft.AspNet.Identity;
 
 namespace CMS.Controllers
 {
-    [RequireHttps]
     public class HomeController : Controller
     {
         private SystemHelper system = new SystemHelper();

@@ -9,17 +9,17 @@
     <div class="card-body">
         @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
-           @Html.AntiForgeryToken()
-        <div class="form-group">
-            @Html.LabelFor(m => m.UserName)
-            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "User Name" })
-            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Password)
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
-            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-        </div>
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "User Name" })
+                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            </div>
             <div class="form-group">
                 <div class="form-check">
                     <label class="form-check-label">
@@ -31,13 +31,16 @@
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <input type="submit" value="Login" class="btn btn-primary btn-block">
         }
-            <div class="text-center">
-                @Html.ActionLink("Forgot password?", "ForgotPassword",null,new { @class= "d-block small" })
-            </div>
+        <div class="text-center">
+            @Html.ActionLink("Forgot password?", "ForgotPassword", null, new { @class = "d-block small" })
+        </div>
     </div>
 </div>
 
-
-
+@section Scripts {
+    <script>
+        alert("Test Admin Account:\nUser Name: ahmed\nPassword: ahmed123");
+    </script>
+}
 
 
